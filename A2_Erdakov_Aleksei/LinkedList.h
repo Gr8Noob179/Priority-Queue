@@ -8,34 +8,30 @@ public:
     LinkedList() : head(nullptr), size(0) {}
     ~LinkedList() { clear(); }
 
-    void push(int priority, T data) {
-        Node<T>* newNode = new Node<T>(priority, data);
-
-        if (!head || priority < head->priority) {
-            newNode->next = head;
-            head = newNode;
-        }
-        else {
-            Node<T>* current = head;
-            while (current->next && current->next->priority <= priority) {
-                current = current->next;
-            }
-            newNode->next = current->next;
-            current->next = newNode;
-        }
-
+    void insertAfter(Node<T>* prevNode, T data) {
+        assert(prevNode != nullptr && "Previous node cannot be null.");
+        Node<T>* newNode = new Node<T>(data);
+        newNode->next = prevNode->next;
+        prevNode->next = newNode;
         size++;
     }
 
-    void pop() {
-        assert(head != nullptr && "Cannot pop from an empty list.");
+    void insertFront(T data) {
+        Node<T>* newNode = new Node<T>(data);
+        newNode->next = head;
+        head = newNode;
+        size++;
+    }
+
+    void removeFront() {
+        assert(head != nullptr && "Cannot remove from an empty list.");
         Node<T>* temp = head;
         head = head->next;
         delete temp;
         size--;
     }
 
-    T& front() {
+    T& getFront() {
         assert(head != nullptr && "Cannot access front of an empty list.");
         return head->data;
     }
@@ -44,9 +40,11 @@ public:
 
     int getSize() const { return size; }
 
+    Node<T>* getHead() const { return head; }
+
     void clear() {
         while (head) {
-            pop();
+            removeFront();
         }
     }
 

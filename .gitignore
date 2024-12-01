@@ -1,6 +1,13 @@
 *.vcxproj
 *.vcxproj.filters
 *.user
+*.pdb
+*.tlog
+*.ilk
+*.log
+*.idb
+*.recipe
+
 .vs
 
 # Prerequisites
