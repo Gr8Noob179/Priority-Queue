@@ -17,11 +17,14 @@ public:
             Node<pair<int, T>>* current = list.getHead();
             Node<pair<int, T>>* prev = nullptr;
 
+            // Traverse the list to find the correct point based on priority
             while (current != nullptr && current->data.first <= priority) {
                 prev = current;
                 current = current->next;
             }
 
+            // If no valid previous node is found - insert at the front
+            // Otherwise, insert after the previous node
             if (prev == nullptr) {
                 list.insertFront({ priority, data });
             }
