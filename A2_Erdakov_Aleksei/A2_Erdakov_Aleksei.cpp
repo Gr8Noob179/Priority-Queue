@@ -5,15 +5,23 @@
 #include "PriorityQueue.h"
 #include "string"
 
-using namespace std;
+using std::cout;
+using std::string;
+using std::endl;
 
 int main() {
+    PriorityQueue<string> queue;
 
-    LinkedList<string> list;
+    cout << "Pushing elements" << endl;
+    queue.push(3, "C");
+    queue.push(1, "A");
+    queue.push(2, "B");
+    queue.push(4, "D");
 
-    list.insertFront("something");
+    while (!queue.isEmpty()) {
+        cout << "  " << queue.front() << endl;
+        queue.pop();
+    }
 
     return 0;
 }
-
-

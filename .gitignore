@@ -1,6 +1,3 @@
-*.vcxproj
-*.vcxproj.filters
-*.user
 *.pdb
 *.tlog
 *.ilk
