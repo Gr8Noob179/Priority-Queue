@@ -3,12 +3,17 @@
 
 #include <iostream>
 #include "PriorityQueue.h"
-#include "LinkedList.h"
 #include "string"
 
 using namespace std;
 
-int main()
-{
+int main() {
+
+    LinkedList<string> list;
+
+    list.insertFront("something");
+
     return 0;
 }
+
+
